@@ -1,4 +1,5 @@
 import pygame
+import time
 
 continuer = True
 
@@ -20,22 +21,25 @@ icon = pygame.image.load("ressources/Soccer_Ball_icon.png")
 pygame.display.set_caption("SoccerGame")
 pygame.display.set_icon(icon)
 
-imgHand = pygame.image.load("ressources/stickeroid_5bf543f41865d.png")
+imgHand = pygame.image.load("ressources/Sanstitre.png")
 
-pygame.draw.rect(ecran, (255, 255, 255), (0, 0, 1000, 700))
+pygame.draw.rect(ecran, (255, 255, 255), (0, 0, width, height))
 ecran.blit(imgHand, (x, y))
+
 while continuer:
 	
 	for event in pygame.event.get():
+		keystate = pygame.key.get_pressed()
 
 		if event.type == pygame.KEYDOWN:
-			print(str(x) + " - " + str(y))
 
 			if event.key == pygame.K_f:
 				continuer = False
 
-			if event.key == pygame.K_w and y > 0:
+			if (event.key == pygame.K_w or keystate[pygame.K_w]) and y > 0:
 				y-=speed 
+				#time.sleep(0.5)
+
 			if event.key == pygame.K_s and y < limY:
 				y+=speed 
 			if event.key == pygame.K_a and x > 0:
