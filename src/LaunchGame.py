@@ -1,55 +1,52 @@
 import pygame
 import time
+import Player
 
 continuer = True
 
 width = 1000
-height = 700
+height = 600
 
-x = 50
-y = 200
-
-limX = width
-limY = height 
-
-speed = 20
+speed = 1
 
 pygame.init()
+player1 = Player(50, 200)
 ecran = pygame.display.set_mode((width, height))
 icon = pygame.image.load("ressources/Soccer_Ball_icon.png")
-
+print(type(icon))
 pygame.display.set_caption("SoccerGame")
 pygame.display.set_icon(icon)
 
-imgHand = pygame.image.load("ressources/Sanstitre.png")
 
 pygame.draw.rect(ecran, (255, 255, 255), (0, 0, width, height))
-ecran.blit(imgHand, (x, y))
+ecran.blit(player1.imgPlayer, (player1.getX(), player1.getY()))
 
+limX = width - player1.getImgPlayer().get_width()
+limY = height - player1.getImgPlayer().get_height()
+
+z = q = s = d =0
+"""
 while continuer:
-	
+	keystate = pygame.key.get_pressed()
+	if keystate[pygame.K_w] and player1.getY() > 0:
+		player1.setY(player1.getY()-speed)
+	if keystate[pygame.K_s] and player1.getY() < limY:
+		player1.setY(player1.getY()+speed)
+	if keystate[pygame.K_a] and player1.getX() > 0:
+		player1.setX(player1.getX()-speed)
+	if keystate[pygame.K_d] and player1.getX() < limX:
+		player1.setX(player1.getX()+speed)
+
 	for event in pygame.event.get():
-		keystate = pygame.key.get_pressed()
 
 		if event.type == pygame.KEYDOWN:
 
 			if event.key == pygame.K_f:
 				continuer = False
 
-			if (event.key == pygame.K_w or keystate[pygame.K_w]) and y > 0:
-				y-=speed 
-				#time.sleep(0.5)
-
-			if event.key == pygame.K_s and y < limY:
-				y+=speed 
-			if event.key == pygame.K_a and x > 0:
-				x-=speed
-			if event.key == pygame.K_d and x < limY:
-				x+=speed
-
-			pygame.draw.rect(ecran, (255, 255, 255), (0, 0, width, height))
-			ecran.blit(imgHand, (x, y))
+	pygame.draw.rect(ecran, (255, 255, 255), (0, 0, width, height))
+	ecran.blit(player1.getImgPlayer(), (player1.getX(), player1.getY()))
 
 	pygame.display.flip()
-
+"""
 pygame.quit()
