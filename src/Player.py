@@ -1,10 +1,14 @@
 import pygame
 
-class Player():
+class Player:
 
 	x = 0
 	y = 0
-	imgPlayer = pygame.image.load("ressources/Sanstitre.png")
+	imgPlayer = pygame.image.load("ressources/player2.png")
+
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
 
 	def getX(self):
 		return self.x

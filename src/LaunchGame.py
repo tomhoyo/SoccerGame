@@ -1,30 +1,6 @@
 import pygame
 import time
-#import Player
-
-
-class Player():
-
-	x = 0
-	y = 0
-	imgPlayer = pygame.image.load("ressources/Sanstitre.png")
-
-	def getX(self):
-		return self.x
-
-	def setX(self, x):
-		self.x = x
-
-	def getY(self):
-		return self.y
-
-	def setY(self, y):
-		self.y = y
-
-	def getImgPlayer(self):
-		return self.imgPlayer
-
-
+from Player import *
 
 continuer = True
 
@@ -34,13 +10,13 @@ height = 600
 speed = 1
 
 pygame.init()
-player1 = Player()
+player1 = Player(50, 200)
+
 ecran = pygame.display.set_mode((width, height))
 icon = pygame.image.load("ressources/Soccer_Ball_icon.png")
-print(type(icon))
+
 pygame.display.set_caption("SoccerGame")
 pygame.display.set_icon(icon)
-
 
 pygame.draw.rect(ecran, (255, 255, 255), (0, 0, width, height))
 ecran.blit(player1.imgPlayer, (player1.getX(), player1.getY()))
@@ -48,7 +24,7 @@ ecran.blit(player1.imgPlayer, (player1.getX(), player1.getY()))
 limX = width - player1.getImgPlayer().get_width()
 limY = height - player1.getImgPlayer().get_height()
 
-z = q = s = d =0
+z = q = s = d = 0
 
 while continuer:
 	keystate = pygame.key.get_pressed()
