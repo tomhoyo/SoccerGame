@@ -4,14 +4,14 @@ class Ball:
 
 	x = 0
 	y = 0
-	imgPlayer = pygame.image.load("ressources/player2.png")
+	imgBall = pygame.image.load("ressources/Soccer_Ball_icon.png")
 	speed = 0.5
 	dirX = 0
 	dirY = 0
 
 	def __init__(self, x, y):
-		self.x = x
-		self.y = y
+		self.x = x - self.getImgBall().get_width()/2
+		self.y = y - self.getImgBall().get_height()/2
 
 	def getX(self):
 		return self.x
@@ -25,8 +25,8 @@ class Ball:
 	def setY(self, y):
 		self.y = y
 
-	def getImgPlayer(self):
-		return self.imgPlayer
+	def getImgBall(self):
+		return self.imgBall
 
 	def getSpeed(self):
 		return self.speed
