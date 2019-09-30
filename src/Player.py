@@ -5,7 +5,7 @@ class Player:
 	x = 0
 	y = 0
 	imgPlayer = pygame.image.load("ressources/player2.png")
-	speed = 0.5
+	speed = 1.25
 
 	limY = 0
 	limX = 0

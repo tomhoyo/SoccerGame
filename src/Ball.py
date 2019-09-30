@@ -1,17 +1,29 @@
 import pygame
+import math
 
 class Ball:
 
 	x = 0
 	y = 0
-	imgBall = pygame.image.load("ressources/Soccer_Ball_icon.png")
-	speed = 0.5
 	dirX = 0
 	dirY = 0
+	speed = 1
+	limY = 0
+	limX = 0
+	alpha = 0
 
-	def __init__(self, x, y):
+	imgBall = pygame.image.load("ressources/Soccer_Ball_icon.png")
+	imgBall = pygame.transform.scale(imgBall, (50, 50))
+
+
+
+	def __init__(self, ctrl, x, y):
 		self.x = x - self.getImgBall().get_width()/2
 		self.y = y - self.getImgBall().get_height()/2
+
+		self.limX = ctrl.width - self.getImgBall().get_width()
+		self.limY = ctrl.height - self.getImgBall().get_height()
+
 
 	def getX(self):
 		return self.x
@@ -33,18 +45,14 @@ class Ball:
 
 	def setSpeed(self, speed):
 		self.speed = speed
-"""
-	def moveUp(self):
-		self.setY(self.getY()-self.getSpeed())
 
-	def moveDown(self):
-		self.setY(self.getY()+self.getSpeed())
+	def hurtPlayer(self, xPlayer, yPlayer):
+		self.alpha = math.atan2((self.y + self.getImgBall().get_height()/2 - yPlayer), (self.x + self.getImgBall().get_width()/2 - xPlayer))
+		self.dirX = math.cos(self.alpha)
+		self.dirY = math.sin(self.alpha)
 
-	def moveRight(self):
-		self.setX(self.getX()+self.getSpeed())
+	"""def hurtWall(self):
+		self."""
+		
 
-	def moveLeft(self):
-		self.setX(self.getX()-self.getSpeed())
-"""
-	#def calculDirX():
-	#def calculDirY():	
+
