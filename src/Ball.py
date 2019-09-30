@@ -7,11 +7,12 @@ class Ball:
 	y = 0
 	dirX = 0
 	dirY = 0
-	speed = 1
+	speed = 0
+	unspeed = 0
 	limY = 0
 	limX = 0
 	alpha = 0
-
+	v=0
 	imgBall = pygame.image.load("ressources/Soccer_Ball_icon.png")
 	imgBall = pygame.transform.scale(imgBall, (50, 50))
 
@@ -50,9 +51,20 @@ class Ball:
 		self.alpha = math.atan2((self.y + self.getImgBall().get_height()/2 - yPlayer), (self.x + self.getImgBall().get_width()/2 - xPlayer))
 		self.dirX = math.cos(self.alpha)
 		self.dirY = math.sin(self.alpha)
+		self.speed = 2
+		self.unspeed = 0
 
-	"""def hurtWall(self):
-		self."""
-		
+	def hurtWallX(self):
+		self.dirX *= -1
 
+	def hurtWallY(self):
+		self.dirY *= -1
+
+	#def moveBall()
+	def decelerate(self):
+		if self.speed > 0:
+			self.speed = -math.pow(self.unspeed, 2) + 2
+			self.unspeed += 0.0005
+		else:
+			self.speed = 0
 
