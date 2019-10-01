@@ -14,33 +14,16 @@ class Controller:
 	scoreRight = 0
 	scoreLeft = 0
 
-"""
-	white = (255, 255, 255)
-	black = (0, 0, 0)
-	X = 400
-	Y = 400
-	pygame.display.set_caption('Show Text') 
-
-	font = pygame.font.Font('freesansbold.ttf', 32) 
-
-	text = font.render('GeeksForGeeks', True, white, black) 
-
-	textRect = text.get_rect() 
-
-	textRect.center = (X // 2, Y // 2)"""
-
-
-
-
-
 
 	def __init__(self):
 		self.continuer = True
 
+		
+
 		self.players.append(Player(self, 50, self.height/2))
 		self.players.append(Player(self, self.width - 100, self.height/2))
 		self.balls.append(Ball(self, self.width/2, self.height/2))
-		self.balls.append(Ball(self, self.width/2, self.height/2 + 70))
+		#self.balls.append(Ball(self, self.width/2, self.height/2 + 70))
 
 		icon = pygame.image.load("ressources/Soccer_Ball_icon.png")
 
@@ -82,9 +65,9 @@ class Controller:
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_f:
 						self.continuer = False
-					"""if event.type == pygame.QUIT : 
+					if event.type == pygame.QUIT : 
 						pygame.quit() 
-						quit()""" 
+						quit()
 			
 			for ball in self.balls:
 				for player in self.players:
@@ -115,11 +98,5 @@ class Controller:
 			
 			for ball in self.balls:
 				self.ecran.blit(ball.getImgBall(), (ball.getX(), ball.getY()))
-
-
-			#self.ecran.blit(self.text, self.textRect) 
-
-
-
 
 			pygame.display.flip()
