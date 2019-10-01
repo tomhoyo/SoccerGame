@@ -10,8 +10,8 @@ class Controller:
 	continuer = True
 	players = PlayerController(2)
 	balls = BallController(5)
-	ecran = pygame.display.set_mode((1000, 650))
-	#ecran = pygame.display.set_mode((0, 0), FULLSCREEN)
+	#ecran = pygame.display.set_mode((1000, 650))
+	ecran = pygame.display.set_mode((0, 0), FULLSCREEN)
 	width = ecran.get_width()
 	height = ecran.get_height()
 	scoreRight = 0
@@ -43,25 +43,26 @@ class Controller:
 			
 			for ball in self.balls.ballsList:
 				for player in self.players.playersList:
-					if ball.getX() > player.getX() and ball.getX() < player.getX() + player.getImgPlayer().get_width() and ball.getY() > player.getY() and ball.getY() < player.getY() + player.getImgPlayer().get_height() or ball.getX() + ball.getImgBall().get_width() > player.getX() and ball.getX() + ball.getImgBall().get_width() < player.getX() + player.getImgPlayer().get_width() and ball.getY() > player.getY() and ball.getY() < player.getY() + player.getImgPlayer().get_height() or ball.getX() + ball.getImgBall().get_width() > player.getX() and ball.getX() + ball.getImgBall().get_width() < player.getX() + player.getImgPlayer().get_width() and ball.getY() + ball.getImgBall().get_height() > player.getY() and ball.getY() + ball.getImgBall().get_height() < player.getY() + player.getImgPlayer().get_height() or ball.getX() > player.getX() and ball.getX() < player.getX() + player.getImgPlayer().get_width() and ball.getY() + ball.getImgBall().get_height() > player.getY() and ball.getY() + ball.getImgBall().get_height() < player.getY() + player.getImgPlayer().get_height():
-						self.balls.collisionMovingObject(ball, player.getX() + player.getImgPlayer().get_width()/2, player.getY() + player.getImgPlayer().get_height()/2)
+					if ball.getX() > player.getX() and ball.getX() < player.getX() + player.getImgSkin().get_width() and ball.getY() > player.getY() and ball.getY() < player.getY() + player.getImgSkin().get_height() or ball.getX() + ball.getImgSkin().get_width() > player.getX() and ball.getX() + ball.getImgSkin().get_width() < player.getX() + player.getImgSkin().get_width() and ball.getY() > player.getY() and ball.getY() < player.getY() + player.getImgSkin().get_height() or ball.getX() + ball.getImgSkin().get_width() > player.getX() and ball.getX() + ball.getImgSkin().get_width() < player.getX() + player.getImgSkin().get_width() and ball.getY() + ball.getImgSkin().get_height() > player.getY() and ball.getY() + ball.getImgSkin().get_height() < player.getY() + player.getImgSkin().get_height() or ball.getX() > player.getX() and ball.getX() < player.getX() + player.getImgSkin().get_width() and ball.getY() + ball.getImgSkin().get_height() > player.getY() and ball.getY() + ball.getImgSkin().get_height() < player.getY() + player.getImgSkin().get_height():
+						self.balls.collisionMovingObject(ball, player)
+						self.balls.calculSpeedAfterCollision(ball, player, True)
 				
 				for otherBall in self.balls.ballsList:
-					if (ball.getX() > otherBall.getX() and ball.getX() < otherBall.getX() + otherBall.getImgBall().get_width() and ball.getY() > otherBall.getY() and ball.getY() < otherBall.getY() + otherBall.getImgBall().get_height() or ball.getX() + ball.getImgBall().get_width() > otherBall.getX() and ball.getX() + ball.getImgBall().get_width() < otherBall.getX() + otherBall.getImgBall().get_width() and ball.getY() > otherBall.getY() and ball.getY() < otherBall.getY() + otherBall.getImgBall().get_height() or ball.getX() + ball.getImgBall().get_width() > otherBall.getX() and ball.getX() + ball.getImgBall().get_width() < otherBall.getX() + otherBall.getImgBall().get_width() and ball.getY() + ball.getImgBall().get_height() > otherBall.getY() and ball.getY() + ball.getImgBall().get_height() < otherBall.getY() + otherBall.getImgBall().get_height() or ball.getX() > otherBall.getX() and ball.getX() < otherBall.getX() + otherBall.getImgBall().get_width() and ball.getY() + ball.getImgBall().get_height() > otherBall.getY() and ball.getY() + ball.getImgBall().get_height() < otherBall.getY() + otherBall.getImgBall().get_height()) and (ball.getX != otherBall.getX and ball.getX != otherBall.getX):
-						self.balls.collisionMovingObject(ball, otherBall.getX() + otherBall.getImgBall().get_width()/2, otherBall.getY() + otherBall.getImgBall().get_height()/2)
+					if (ball.getX() > otherBall.getX() and ball.getX() < otherBall.getX() + otherBall.getImgSkin().get_width() and ball.getY() > otherBall.getY() and ball.getY() < otherBall.getY() + otherBall.getImgSkin().get_height() or ball.getX() + ball.getImgSkin().get_width() > otherBall.getX() and ball.getX() + ball.getImgSkin().get_width() < otherBall.getX() + otherBall.getImgSkin().get_width() and ball.getY() > otherBall.getY() and ball.getY() < otherBall.getY() + otherBall.getImgSkin().get_height() or ball.getX() + ball.getImgSkin().get_width() > otherBall.getX() and ball.getX() + ball.getImgSkin().get_width() < otherBall.getX() + otherBall.getImgSkin().get_width() and ball.getY() + ball.getImgSkin().get_height() > otherBall.getY() and ball.getY() + ball.getImgSkin().get_height() < otherBall.getY() + otherBall.getImgSkin().get_height() or ball.getX() > otherBall.getX() and ball.getX() < otherBall.getX() + otherBall.getImgSkin().get_width() and ball.getY() + ball.getImgSkin().get_height() > otherBall.getY() and ball.getY() + ball.getImgSkin().get_height() < otherBall.getY() + otherBall.getImgSkin().get_height()) and (ball.getX != otherBall.getX and ball.getX != otherBall.getX):
+						self.balls.collisionMovingObject(ball, otherBall)
+						self.balls.calculSpeedAfterCollision(ball, player, False)
 
-				
-				
+
 			pygame.draw.rect(self.ecran, (255, 255, 255), (0, 0, self.width, self.height))
 
 			for player in self.players.playersList:
-				self.ecran.blit(player.getImgPlayer(), (player.getX(), player.getY()))
+				self.ecran.blit(player.getImgSkin(), (player.getX(), player.getY()))
 			
 			for ball in self.balls.ballsList:
 				self.balls.decelerate(ball)
 				self.balls.collisionWall(ball, self)
 				self.balls.move(ball)
 
-				self.ecran.blit(ball.getImgBall(), (ball.getX(), ball.getY()))
+				self.ecran.blit(ball.getImgSkin(), (ball.getX(), ball.getY()))
 
 			pygame.display.flip()

@@ -9,19 +9,20 @@ class Ball:
 	dirY = 0
 	speed = 0
 	unspeed = 0
+	maxSpeed = 3
 	alpha = 0
 	limY = 0
 	limX = 0
-	imgBall = pygame.image.load("ressources/Soccer_Ball_icon.png")
-	imgBall = pygame.transform.scale(imgBall, (50, 50))
+	imgSkin = pygame.image.load("ressources/Soccer_Ball_icon.png")
+	imgSkin = pygame.transform.scale(imgSkin, (50, 50))
 
 
 	def __init__(self, ctrl, x, y):
-		self.x = x - self.getImgBall().get_width()/2
-		self.y = y - self.getImgBall().get_height()/2
+		self.x = x - self.getImgSkin().get_width()/2
+		self.y = y - self.getImgSkin().get_height()/2
 
-		self.limX = ctrl.width - self.getImgBall().get_width()
-		self.limY = ctrl.height - self.getImgBall().get_height()
+		self.limX = ctrl.width - self.getImgSkin().get_width()
+		self.limY = ctrl.height - self.getImgSkin().get_height()
 
 
 	def getX(self):
@@ -60,11 +61,14 @@ class Ball:
 	def setDirY(self, dirY):
 		self.dirY = dirY
 
-	def getImgBall(self):
-		return self.imgBall
+	def getImgSkin(self):
+		return self.imgSkin
 
 	def getSpeed(self):
 		return self.speed
 
 	def setSpeed(self, speed):
 		self.speed = speed
+
+	def getMaxSpeed(self):
+		return self.maxSpeed

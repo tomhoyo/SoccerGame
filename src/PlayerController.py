@@ -36,5 +36,3 @@ class PlayerController:
 				self.playersList[1].moveLeft()
 			if keystate[pygame.K_RIGHT] and self.playersList[1].getX() < self.playersList[1].limX:
 				self.playersList[1].moveRight()
-
-

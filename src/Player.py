@@ -4,7 +4,7 @@ class Player:
 
 	x = 0
 	y = 0
-	imgPlayer = pygame.image.load("ressources/player2.png")
+	imgSkin = pygame.image.load("ressources/player2.png")
 	speed = 1.25
 
 	limY = 0
@@ -14,8 +14,8 @@ class Player:
 		self.x = x
 		self.y = y
 
-		self.limX = ctrl.width - self.getImgPlayer().get_width()
-		self.limY = ctrl.height - self.getImgPlayer().get_height()
+		self.limX = ctrl.width - self.getImgSkin().get_width()
+		self.limY = ctrl.height - self.getImgSkin().get_height()
 
 	def getX(self):
 		return self.x
@@ -29,8 +29,8 @@ class Player:
 	def setY(self, y):
 		self.y = y
 
-	def getImgPlayer(self):
-		return self.imgPlayer
+	def getImgSkin(self):
+		return self.imgSkin
 
 	def getSpeed(self):
 		return self.speed
