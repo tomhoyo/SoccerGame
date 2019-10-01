@@ -9,13 +9,11 @@ class Ball:
 	dirY = 0
 	speed = 0
 	unspeed = 0
+	alpha = 0
 	limY = 0
 	limX = 0
-	alpha = 0
-	v=0
 	imgBall = pygame.image.load("ressources/Soccer_Ball_icon.png")
 	imgBall = pygame.transform.scale(imgBall, (50, 50))
-
 
 
 	def __init__(self, ctrl, x, y):
@@ -38,6 +36,30 @@ class Ball:
 	def setY(self, y):
 		self.y = y
 
+	def getLimX(self):
+		return self.limX
+
+	def setLimX(self, limX):
+		self.limX = limX
+
+	def getLimY(self):
+		return self.limY
+
+	def setLimY(self, limY):
+		self.limY = limY
+
+	def getDirX(self):
+		return self.dirX
+
+	def setDirX(self, dirX):
+		self.dirX = dirX
+
+	def getDirY(self):
+		return self.dirY
+
+	def setDirY(self, dirY):
+		self.dirY = dirY
+
 	def getImgBall(self):
 		return self.imgBall
 
@@ -46,25 +68,3 @@ class Ball:
 
 	def setSpeed(self, speed):
 		self.speed = speed
-
-	def hurtPlayer(self, xPlayer, yPlayer):
-		self.alpha = math.atan2((self.y + self.getImgBall().get_height()/2 - yPlayer), (self.x + self.getImgBall().get_width()/2 - xPlayer))
-		self.dirX = math.cos(self.alpha)
-		self.dirY = math.sin(self.alpha)
-		self.speed = 2
-		self.unspeed = 0
-
-	def hurtWallX(self):
-		self.dirX *= -1
-
-	def hurtWallY(self):
-		self.dirY *= -1
-
-	#def moveBall()
-	def decelerate(self):
-		if self.speed > 0:
-			self.speed = -math.pow(self.unspeed, 2) + 2
-			self.unspeed += 0.0005
-		else:
-			self.speed = 0
-
