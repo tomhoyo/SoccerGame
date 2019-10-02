@@ -9,7 +9,7 @@ class Ball:
 	dirY = 0
 	speed = 0
 	unspeed = 0
-	maxSpeed = 3
+	maxSpeed = 2
 	alpha = 0
 	limY = 0
 	limX = 0
@@ -21,8 +21,8 @@ class Ball:
 		self.x = x - self.getImgSkin().get_width()/2
 		self.y = y - self.getImgSkin().get_height()/2
 
-		self.limX = ctrl.width - self.getImgSkin().get_width()
-		self.limY = ctrl.height - self.getImgSkin().get_height()
+		self.limX = ctrl.frame.width - self.getImgSkin().get_width()
+		self.limY = ctrl.frame.height - self.getImgSkin().get_height()
 
 
 	def getX(self):

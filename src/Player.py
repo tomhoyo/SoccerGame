@@ -14,8 +14,8 @@ class Player:
 		self.x = x
 		self.y = y
 
-		self.limX = ctrl.width - self.getImgSkin().get_width()
-		self.limY = ctrl.height - self.getImgSkin().get_height()
+		self.limX = ctrl.frame.width - self.getImgSkin().get_width()
+		self.limY = ctrl.frame.height - self.getImgSkin().get_height()
 
 	def getX(self):
 		return self.x
