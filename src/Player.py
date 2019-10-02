@@ -5,14 +5,14 @@ class Player:
 	x = 0
 	y = 0
 	imgSkin = pygame.image.load("ressources/player2.png")
-	speed = 1.25
+	speed = 1.5
 
 	limY = 0
 	limX = 0
 
 	def __init__(self, ctrl, x, y):
-		self.x = x
-		self.y = y
+		self.x = x - self.getImgSkin().get_width()/2
+		self.y = y - self.getImgSkin().get_height()/2
 
 		self.limX = ctrl.frame.width - self.getImgSkin().get_width()
 		self.limY = ctrl.frame.height - self.getImgSkin().get_height()

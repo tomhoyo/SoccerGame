@@ -10,12 +10,16 @@ class BallController(object):
 		self.nbrBall = nbrBall
 
 	def Createballs(self, ctrl):
-		self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2))
-		#self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 70))
-		#self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 120))
-		#self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 70))
-		#self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 120))
-
+		if ctrl.nbrBall >= 1
+			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2))
+		if ctrl.nbrBall >= 2
+			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 70))
+		if ctrl.nbrBall >= 3
+			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 120))
+		if ctrl.nbrBall >= 4
+			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 70))
+		if ctrl.nbrBall >= 5
+			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 120))
 
 	def checkCollisionMovingObject(self, ball, Object):
 		ball.alpha = math.atan2((ball.y + ball.getImgSkin().get_height()/2 - (Object.getY() + Object.getImgSkin().get_height()/2)), (ball.x + ball.getImgSkin().get_width()/2 - (Object.getX() + Object.getImgSkin().get_width()/2)))
