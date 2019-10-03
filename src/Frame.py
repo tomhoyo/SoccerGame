@@ -37,4 +37,7 @@ class Frame:
 
 		pygame.display.flip()
 
+	def displayForm():
+		pass
+
 	

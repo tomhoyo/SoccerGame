@@ -10,15 +10,15 @@ class BallController(object):
 		self.nbrBall = nbrBall
 
 	def Createballs(self, ctrl):
-		if ctrl.nbrBall >= 1
+		if self.nbrBall >= 1:
 			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2))
-		if ctrl.nbrBall >= 2
+		if self.nbrBall >= 2:
 			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 70))
-		if ctrl.nbrBall >= 3
+		if self.nbrBall >= 3:
 			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 120))
-		if ctrl.nbrBall >= 4
+		if self.nbrBall >= 4:
 			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 70))
-		if ctrl.nbrBall >= 5
+		if self.nbrBall >= 5:
 			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 120))
 
 	def checkCollisionMovingObject(self, ball, Object):
