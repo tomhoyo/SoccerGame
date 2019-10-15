@@ -5,12 +5,16 @@ class Player:
 	x = 0
 	y = 0
 	imgSkin = pygame.image.load("ressources/player2.png")
-	speed = 1.5
+	speed = 0
 
 	limY = 0
 	limX = 0
 
 	def __init__(self, ctrl, x, y):
+		self.speed = (ctrl.frame.width * 1.5) / 1366
+
+		self.imgSkin = pygame.transform.scale(self.imgSkin, (int(ctrl.frame.width * 0.04), int(ctrl.frame.height * 0.13)))
+
 		self.x = x - self.getImgSkin().get_width()/2
 		self.y = y - self.getImgSkin().get_height()/2
 
@@ -35,6 +39,9 @@ class Player:
 	def getSpeed(self):
 		return self.speed
 
+	def setSpeed(self, speed):
+		self.speed = speed
+
 	def setlimY(self, limY):
 		self.limY = limY
 
@@ -47,12 +54,9 @@ class Player:
 	def getlimY(self):
 		return self.limX
 
-	def setSpeed(self, speed):
-		self.speed = speed
-
 	def moveUp(self):
 		self.setY(self.getY()-self.getSpeed())
-
+		
 	def moveDown(self):
 		self.setY(self.getY()+self.getSpeed())
 

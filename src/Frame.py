@@ -10,17 +10,21 @@ class Frame:
 	width = frame.get_width()
 	height = frame.get_height()
 
-	font = pygame.font.Font('freesansbold.ttf', 32)
+	clock = pygame.time.Clock()
+	frameRate = 300
+
+	font = pygame.font.Font('freesansbold.ttf', int(height * 0.04))
 	text = font.render('0 - 0', True, (255, 255, 255), (0, 0, 0))
 	textRect = text.get_rect() 
-	textRect.center = (width // 2, 16)
+	textRect.center = (width // 2, int(height * 0.04) / 2)
 
 	def __init__(self):
 		pygame.display.set_caption("SoccerGame")
 		pygame.display.set_icon(pygame.image.load("ressources/Soccer_Ball_icon.png"))
 
+
 	def displayObjects(self, Objects):
-		for Object in Objects.list:
+		for Object in Objects.listObject:
 			self.frame.blit(Object.getImgSkin(), (Object.getX(), Object.getY()))
 
 	def displayScore(self, scoreA, scoreB):
@@ -29,6 +33,8 @@ class Frame:
 
 
 	def refreshFrame(self, balls, players, scoreA, scoreB):
+		self.clock.tick(self.frameRate)
+
 		pygame.draw.rect(self.frame, (255, 255, 255), (0, 0, self.width, self.height))
 
 		self.displayScore(scoreA, scoreB)

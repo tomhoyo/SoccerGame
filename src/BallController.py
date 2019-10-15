@@ -4,22 +4,25 @@ from Ball import *
 class BallController(object):
 
 	nbrBall = 0
-	list = []
+	listObject = []
+	listPos = []
+
 
 	def __init__(self, nbrBall):
 		self.nbrBall = nbrBall
 
 	def Createballs(self, ctrl):
-		if self.nbrBall >= 1:
-			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2))
-		if self.nbrBall >= 2:
-			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 70))
-		if self.nbrBall >= 3:
-			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 + 120))
-		if self.nbrBall >= 4:
-			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 70))
-		if self.nbrBall >= 5:
-			self.list.append(Ball(ctrl, ctrl.frame.width/2, ctrl.frame.height/2 - 120))
+		self.listPos.append([ctrl.frame.width/2, ctrl.frame.height/2])
+		x = 1
+		while x < 3:
+			self.listPos.append([ctrl.frame.width/2, ctrl.frame.height/2 + (int(ctrl.frame.height * 0.07) + int(ctrl.frame.height * 0.026)) * x])
+			self.listPos.append([ctrl.frame.width/2, ctrl.frame.height/2 - (int(ctrl.frame.height * 0.07) + int(ctrl.frame.height * 0.026)) * x])
+			x+=1
+
+		x = 0
+		while x < self.nbrBall:
+			self.listObject.append(Ball(ctrl, self.listPos[x][0], self.listPos[x][1]))
+			x+=1
 
 	def checkCollisionMovingObject(self, ball, Object):
 		ball.alpha = math.atan2((ball.y + ball.getImgSkin().get_height()/2 - (Object.getY() + Object.getImgSkin().get_height()/2)), (ball.x + ball.getImgSkin().get_width()/2 - (Object.getX() + Object.getImgSkin().get_width()/2)))
