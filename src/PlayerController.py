@@ -7,17 +7,23 @@ class PlayerController:
 	listObject = []
 	listPos = []
 
-	def __init__(self, nbrPlayers):
+	def __init__(self):
+		pass
+
+	def CreatePlayers(self, ctrl, nbrPlayers):
 		self.nbrPlayers = nbrPlayers
 
-	def CreatePlayers(self, ctrl):
-		self.listPos.append([int(ctrl.frame.width * 0.036), ctrl.frame.height/2])
-		self.listPos.append([ctrl.frame.width - int(ctrl.frame.width * 0.036), ctrl.frame.height/2])
+		self.CreatePos(ctrl)
 
 		x = 0
 		while x < self.nbrPlayers:
 			self.listObject.append(Player(ctrl, self.listPos[x][0], self.listPos[x][1]))
 			x+=1
+
+	def CreatePos(self, ctrl):
+		self.listPos.append([int(ctrl.frame.width * 0.036), ctrl.frame.height/2])
+		self.listPos.append([ctrl.frame.width - int(ctrl.frame.width * 0.036), ctrl.frame.height/2])
+
 
 	def CheckKeyEventPLayers(self, keystate):
 		if self.nbrPlayers >=1:
@@ -39,3 +45,10 @@ class PlayerController:
 				self.listObject[1].moveLeft()
 			if keystate[pygame.K_RIGHT] and self.listObject[1].getX() < self.listObject[1].limX:
 				self.listObject[1].moveRight()
+
+	def respawnPlayers(self):
+		x = 0
+		for player in self.listObject:
+			player.setX(self.listPos[x][0] - player.getImgSkin().get_width()/2)
+			player.setY(self.listPos[x][1] - player.getImgSkin().get_height()/2)
+			x+=1
