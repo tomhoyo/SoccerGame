@@ -46,7 +46,7 @@ class GamePanel:
 		pygame.draw.rect(self.frame.frame, (255, 255, 255), (0, 0, self.width, self.height))
 
 		font = pygame.font.Font('freesansbold.ttf', self.frame.height // 4)
-		text = font.render("Winner : " + winner, True, (255, 255, 255), (0, 0, 0))
+		text = font.render("Winner : " + str(winner), True, (255, 255, 255), (0, 0, 0))
 		textRect = text.get_rect() 
 		textRect.center = (self.frame.width // 2, self.frame.height // 2)
 		self.frame.frame.blit(text, textRect)

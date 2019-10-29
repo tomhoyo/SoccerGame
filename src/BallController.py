@@ -40,14 +40,15 @@ class BallController(object):
 			if ball.getX() >= ball.getLimX():
 				ctrl.scoreLeft += 1
 				if ctrl.scoreLeft >= ctrl.scoreMax:
-					ctrl.congratulateWinner("Left")
+					return "Left"
 			else:
 				ctrl.scoreRight += 1
 				if ctrl.scoreRight >= ctrl.scoreMax:
-					ctrl.congratulateWinner("Right")
+					return "Right"
 			ctrl.restartGameAfterBut()
 		if ball.getY() <= 0 or ball.getY() >= ball.getLimY():
 			ball.setDirY(ball.getDirY() * -1)
+		return "0"
 
 	def decelerate(self, ball):
 		if ball.speed > 0:
