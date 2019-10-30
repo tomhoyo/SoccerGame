@@ -15,7 +15,7 @@ class Ball:
 	imgSkin = pygame.image.load("ressources/Soccer_Ball_icon.png")
 
 	def __init__(self, ctrl, x, y):
-		self.maxSpeed = (ctrl.frame.width * 4) / 1366
+		self.maxSpeed = (ctrl.frame.width * 2) / 1366
 
 		self.imgSkin = pygame.transform.scale(self.imgSkin, (int(ctrl.frame.width * 0.04), int(ctrl.frame.height * 0.07)))
 

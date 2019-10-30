@@ -11,14 +11,13 @@ class Controller:
 	balls = BallController()
 
 	stayInGame = True
-	stayForm = True
+	stayInForm = True
+	stayInApp = True
 	scoreRight = 0
 	scoreLeft = 0
 	scoreMax = 2
 
 	def __init__(self):
-		self.stayInGame = True
-
 		self.formManager()
 
 	def startGame(self):
@@ -63,22 +62,45 @@ class Controller:
 		self.players.respawnPlayers()
 		self.startGame()
 
-	def initGame(self):
+	def initGame(self, nbrPlayer, nbrBall):
 		self.players.listObject.clear()
 		self.balls.listObject.clear()
 		self.scoreRight = 0
 		self.scoreLeft = 0
-		self.players.CreatePlayers(self, 2)
-		self.balls.Createballs(self, 1)
+		self.players.CreatePlayers(self, nbrPlayer)
+		self.balls.Createballs(self, nbrBall)
 
 	def formManager(self):
-		self.frame.formPanel.displayForm()
-		self.stayForm = True
+		nbrPlayer = 2
+		nbrBall = 1
 
-		while self.stayForm:
-			self.initGame()
-			self.startGame()
+		self.stayInApp = True
+		while self.stayInApp:
+			self.frame.formPanel.displayForm(nbrPlayer, nbrBall)
 
-			"""
-			check click button
-			"""
+			self.stayInForm = True
+			while self.stayInForm:
+				for event in pygame.event.get():
+					if event.type == pygame.MOUSEBUTTONDOWN:
+						Mouse_x, Mouse_y = pygame.mouse.get_pos()
+						if Mouse_y > self.frame.height * (2/3) - self.frame.formPanel.imgStartButton.get_height()/2 and Mouse_y < self.frame.height * (2/3) + self.frame.formPanel.imgStartButton.get_height()/2:
+							if Mouse_x > self.frame.width * (2/3) - self.frame.formPanel.imgStartButton.get_width()/2 and Mouse_x < self.frame.width * (2/3) + self.frame.formPanel.imgStartButton.get_width()/2:
+								self.initGame(nbrPlayer, nbrBall)
+								self.startGame()
+								self.stayInForm = False
+							elif Mouse_x > self.frame.width * (1/3) - self.frame.formPanel.imgQuitButton.get_width()/2 and Mouse_x < self.frame.width * (1/3) + self.frame.formPanel.imgQuitButton.get_width()/2:
+								self.stayInApp = False
+								self.stayInForm = False
+						elif Mouse_y > self.frame.height * (1/3) + self.frame.formPanel.imgDownButton.get_height() * 3/2 and Mouse_y < self.frame.height * (1/3) + self.frame.formPanel.imgDownButton.get_height() * 5/2:
+							if Mouse_x > self.frame.width * (2/3) - self.frame.formPanel.imgUpButton.get_width() * 3/2 and Mouse_x < self.frame.width * (2/3) - self.frame.formPanel.imgUpButton.get_width() * 1/2:
+								nbrPlayer+=1
+								self.frame.formPanel.refreshDisplaySelectionPlayerNbr(nbrPlayer)
+							elif Mouse_x > self.frame.width * (2/3) + self.frame.formPanel.imgDownButton.get_width() * 1/2 and Mouse_x < self.frame.width * (2/3) + self.frame.formPanel.imgDownButton.get_width() * 3/2:
+								nbrPlayer-=1
+								self.frame.formPanel.refreshDisplaySelectionPlayerNbr(nbrPlayer)
+							elif Mouse_x > self.frame.width * (1/3) - self.frame.formPanel.imgUpButton.get_width() * 3/2 and Mouse_x < self.frame.width * (1/3) - self.frame.formPanel.imgUpButton.get_width() * 1/2:
+								nbrBall+=1
+								self.frame.formPanel.refreshDisplaySelectionBallNbr(nbrBall)
+							elif Mouse_x > self.frame.width * (1/3) + self.frame.formPanel.imgDownButton.get_width() * 1/2 and Mouse_x < self.frame.width * (1/3) + self.frame.formPanel.imgDownButton.get_width() * 3/2:
+								nbrBall-=1
+								self.frame.formPanel.refreshDisplaySelectionBallNbr(nbrBall)
