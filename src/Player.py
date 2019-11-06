@@ -4,7 +4,7 @@ class Player:
 
 	x = 0
 	y = 0
-	imgSkin = pygame.image.load("ressources/player2.png")
+	imgSkin = pygame.image.load("ressources/player3.png")
 	speed = 0
 
 	limY = 0
