@@ -15,7 +15,7 @@ class Controller:
 	stayInApp = True
 	scoreRight = 0
 	scoreLeft = 0
-	scoreMax = 2
+	scoreMax = 10
 
 	def __init__(self):
 		self.formManager()
@@ -92,15 +92,15 @@ class Controller:
 								self.stayInApp = False
 								self.stayInForm = False
 						elif Mouse_y > self.frame.height * (1/3) + self.frame.formPanel.imgDownButton.get_height() * 3/2 and Mouse_y < self.frame.height * (1/3) + self.frame.formPanel.imgDownButton.get_height() * 5/2:
-							if Mouse_x > self.frame.width * (2/3) - self.frame.formPanel.imgUpButton.get_width() * 3/2 and Mouse_x < self.frame.width * (2/3) - self.frame.formPanel.imgUpButton.get_width() * 1/2:
+							if Mouse_x > self.frame.width * (2/3) - self.frame.formPanel.imgUpButton.get_width() * 3/2 and Mouse_x < self.frame.width * (2/3) - self.frame.formPanel.imgUpButton.get_width() * 1/2 and nbrPlayer <= 1:
 								nbrPlayer+=1
 								self.frame.formPanel.refreshDisplaySelectionPlayerNbr(nbrPlayer)
-							elif Mouse_x > self.frame.width * (2/3) + self.frame.formPanel.imgDownButton.get_width() * 1/2 and Mouse_x < self.frame.width * (2/3) + self.frame.formPanel.imgDownButton.get_width() * 3/2:
+							elif Mouse_x > self.frame.width * (2/3) + self.frame.formPanel.imgDownButton.get_width() * 1/2 and Mouse_x < self.frame.width * (2/3) + self.frame.formPanel.imgDownButton.get_width() * 3/2 and nbrPlayer >= 2:
 								nbrPlayer-=1
 								self.frame.formPanel.refreshDisplaySelectionPlayerNbr(nbrPlayer)
-							elif Mouse_x > self.frame.width * (1/3) - self.frame.formPanel.imgUpButton.get_width() * 3/2 and Mouse_x < self.frame.width * (1/3) - self.frame.formPanel.imgUpButton.get_width() * 1/2:
+							elif Mouse_x > self.frame.width * (1/3) - self.frame.formPanel.imgUpButton.get_width() * 3/2 and Mouse_x < self.frame.width * (1/3) - self.frame.formPanel.imgUpButton.get_width() * 1/2 and nbrBall <= 4:
 								nbrBall+=1
 								self.frame.formPanel.refreshDisplaySelectionBallNbr(nbrBall)
-							elif Mouse_x > self.frame.width * (1/3) + self.frame.formPanel.imgDownButton.get_width() * 1/2 and Mouse_x < self.frame.width * (1/3) + self.frame.formPanel.imgDownButton.get_width() * 3/2:
+							elif Mouse_x > self.frame.width * (1/3) + self.frame.formPanel.imgDownButton.get_width() * 1/2 and Mouse_x < self.frame.width * (1/3) + self.frame.formPanel.imgDownButton.get_width() * 3/2 and nbrBall >= 2:
 								nbrBall-=1
 								self.frame.formPanel.refreshDisplaySelectionBallNbr(nbrBall)
